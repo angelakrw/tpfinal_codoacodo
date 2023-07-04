@@ -4,6 +4,19 @@ body {
     background-color: #0a0a0a;
 }
 
+.column {
+    float: left;
+    width: 48%;
+    
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
 .contenedor-centrado {
     display:flex;
     width: 100%;
@@ -30,7 +43,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 form {
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.526);

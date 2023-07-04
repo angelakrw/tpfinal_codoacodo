@@ -18,18 +18,24 @@
     <!-- /////////////// -->
     <!-- Añadir producto -->
     <!-- /////////////// -->
+    <h2>Añadir Producto</h2>
     <form id="formulario">
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo" required><br>
-
         <label for="descripcion">Descripción:</label>
         <input type="text" id="descripcion" name="descripcion" required><br>
 
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad" required><br>
+        <div class="row">
+            <div class="column">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required><br>
+            </div>
+            <div class="column">
+                <label for="precio">Precio:</label>
+                <input type="number" step="0.01" id="precio" name="precio" required><br>
+            </div>
+        </div>
 
-        <label for="precio">Precio:</label>
-        <input type="number" step="0.01" id="precio" name="precio" required><br>
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required><br>
 
         <button type="submit">Agregar Producto</button>
     </form>
@@ -37,11 +43,12 @@
     <!-- ///////////////////////////////// -->
     <!-- Buscador para modificar productos -->
     <!-- ///////////////////////////////// -->
+    <h2>Modificar producto</h2>
     <div id="appMod">
         <form @submit.prevent="obtenerProducto">
             <label for="codigo">Código:</label>
             <input type="text" v-model="codigo" required><br>
-            <button type="submit">Modificar Producto</button> <a href="index.html#Productos">Menu principal</a>
+            <button type="submit">Modificar Producto</button>
         </form>
 
         <div v-if="mostrarDatosProducto">
@@ -65,6 +72,7 @@
     <!-- /////////////////////////// -->
     <!-- Lista para borrar productos -->
     <!-- /////////////////////////// -->
+    <h2>Listado de productos</h2>
     <div id="appDel">
         <div>
             <table>
