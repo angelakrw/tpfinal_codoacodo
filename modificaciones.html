@@ -7,17 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Producto</title>
     <link rel="stylesheet" href="css/estilos.css">
+        <script src="https://unpkg.com/vue@next"></script>
 </head>
 
 <body>
-    <h1>Modificar Productos del Inventario</h1>
+    <h1>Panel de control</h1>
     <div class="img"><img src="img/logo_codo.png" alt="codoacodo" width="100px"></div>
-    <h3>Codo a Codo 2023</h3>
-    <div id="app">
+    <h3>EspectroZero</h3>
+
+    <!-- /////////////// -->
+    <!-- Añadir producto -->
+    <!-- /////////////// -->
+    <form id="formulario">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" required><br>
+
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" required><br>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required><br>
+
+        <label for="precio">Precio:</label>
+        <input type="number" step="0.01" id="precio" name="precio" required><br>
+
+        <button type="submit">Agregar Producto</button>
+    </form>
+
+    <!-- ///////////////////////////////// -->
+    <!-- Buscador para modificar productos -->
+    <!-- ///////////////////////////////// -->
+    <div id="appMod">
         <form @submit.prevent="obtenerProducto">
             <label for="codigo">Código:</label>
             <input type="text" v-model="codigo" required><br>
-            <button type="submit">Modificar Producto</button> <a href="index.html">Menu principal</a>
+            <button type="submit">Modificar Producto</button> <a href="index.html#Productos">Menu principal</a>
         </form>
 
         <div v-if="mostrarDatosProducto">
@@ -38,76 +62,36 @@
         </div>
     </div>
 
-    <script src="https://unpkg.com/vue@next"></script>
-    <script>
-        //const URL = "http://127.0.0.1:5000/"
-        const URL = "https://angelakrw.pythonanywhere.com/"
+    <!-- /////////////////////////// -->
+    <!-- Lista para borrar productos -->
+    <!-- /////////////////////////// -->
+    <div id="appDel">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th align="right">Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="producto in productos">
+                        <td>{{ producto.codigo }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td>{{ producto.cantidad }}</td>
+                        <td align="right">{{ producto.precio }}</td>
+                        <td><button @click="eliminarProducto(producto.codigo)">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="./scripts/modif.js"></script>
 
-        const app = Vue.createApp({
-            data() {
-                return {
-                    codigo: '',
-                    mostrarDatosProducto: false,
-                    descripcion: '',
-                    cantidad: '',
-                    precio: ''
-                }
-            },
-            methods: {
-                obtenerProducto() {
-                    fetch(URL + 'productos/' + this.codigo)
-                        .then(response => {
-                            if (response.ok) {
-                                return response.json()
-                            } else {
-                                throw new Error('Error al obtener los datos del producto.')
-                            }
-                        })
-                        .then(data => {
-                            this.descripcion = data.descripcion
-                            this.cantidad = data.cantidad
-                            this.precio = data.precio
-                            this.mostrarDatosProducto = true
-                        })
-                        .catch(error => {
-                            alert('Error al obtener los datos del producto.')
-                        })
-                },
-                guardarCambios() {
-                    const producto = {
-                        codigo: this.codigo,
-                        descripcion: this.descripcion,
-                        cantidad: this.cantidad,
-                        precio: this.precio
-                    }
-
-                    fetch(URL + 'productos/' + this.codigo, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(producto)
-                    })
-                        .then(response => {
-                            if (response.ok) {
-                                return response.json()
-                            } else {
-                                throw new Error('Error al guardar los cambios del producto.')
-                            }
-                        })
-                        .then(data => {
-                            alert('Cambios guardados correctamente.')
-                            location.reload()
-                        })
-                        .catch(error => {
-                            alert('Error al guardar los cambios del producto.')
-                        })
-                }
-            }
-        })
-
-        app.mount('#app')
-    </script>
 </body>
 
 </html>

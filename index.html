@@ -79,33 +79,11 @@
     <div class="separadorBlock"></div>
     
     <a name="Productos"></a>
-    <div id="Productos">
+    <div id="Productos" class="contenedor">
         <h2>Productos</h2>
         <div id="app">
-            <button @click="mostrarPanel = !mostrarPanel">Panel de control (¡No tocar! Solo personal)</button>
-            <div v-if="mostrarPanel">
-                <table>
-                    <tr>
-                        <td class="contenedor-centrado"><a href="altas.html">Alta de productos</a></td>
-                    </tr>
-        
-                    <tr>
-                        <td class="contenedor-centrado "><a href="listado.html">Listado de productos</a></td>
-                    </tr>
-        
-                    <tr>
-                        <td class="contenedor-centrado "><a href="modificaciones.html">Modificar datos de productos</a></td>
-                    </tr>
-        
-                    <tr>
-                        <td class="contenedor-centrado "><a href="listadoEliminar.html">Eliminar productos</a></td>
-                    </tr>
-        
-                    <tr>
-                        <td class="contenedor-centrado "><a href="carrito1.html">Carrito de compras</a></td>
-                    </tr>
-                </table>
-            </div>
+            <a href="modificaciones.html">Panel de control (¡No tocar! Solo personal)</a>
+                    
 
             <h1>Carrito de compras</h1>
             <table>
