@@ -12,8 +12,10 @@
 
 <body>
     <h1>Panel de control</h1>
+    <a style="padding: 0" href="./index.html">
+    <div>
     <div class="img"><img src="images/logo-simple.png" alt="codoacodo" width="100px"></div>
-    <h3>EspectroZero</h3>
+    <h3>EspectroZero</h3></div></a>
 
     <!-- /////////////// -->
     <!-- Añadir producto -->
@@ -33,11 +35,13 @@
                 <input type="number" step="0.01" id="precio" name="precio" required><br>
             </div>
         </div>
-
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo" required><br>
-
-        <button type="submit">Agregar Producto</button>
+        <div class="row">
+            <div class="column">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo" required><br>
+            </div>
+            <div class="column"> <button type="submit">Agregar Producto</button></div>
+        </div>
     </form>
 
     <!-- ///////////////////////////////// -->
