@@ -3,37 +3,310 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TPO FINAL</title>
-    <link rel="stylesheet" href="./css/estilos.css">
+    <title>EspectroZero</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo-simple.png">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/bf601531a2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div>
-        <h1>TPO FINAL</h1>
-        <div class="img"><img src="./img/logo_codo.png" alt="codoacodo" width="100px"></div>
-        <h3>Codo a Codo 2023</h3>
-        <table>
-            <tr>
-                <td class="contenedor-centrado"><a href="altas.html">Alta de productos</a></td>
-            </tr>
+    <header class="header">
+        <div class="logo" id="logo_header">
+            <img src="images/logo.png" alt="logo de la marca">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href=#Nosotros>Nosotros</a></li>
+                <li><a href=#Servicios>Servicios</a></li>
+                <li><a href=#Clientes>Clientes</a></li>
+            </ul>
+        </nav>
+        <a href=#Contacto class="boton"><button>Contacto</button></a>
+    </header>
+    
 
-            <tr>
-                <td class="contenedor-centrado "><a href="listado.html">Listado de productos</a></td>
-            </tr>
+    <section class="showcase">
+        <div class="videoContainer">
+            <video src="video/coverr-scary-hallway-7141-1080p.mp4" autoplay muted loop></video>
+        </div>
+        <a name="Nosotros"></a>
+        <div class="contenedor-fluido">
+                <div class="logoNosotros">
+                    <img src="./images/logo1.png" id="logoImg" alt="logo de la marca">
+                    <img src="./images/logo-small.png" id="logoImgSmall" alt="espectroZero">
+                <div class="contenedorNosotros">
+                    <p>Somos EspectroZero, una cooperativa situada en la Ciudad de Buenos Aires especializada en eliminar todas
+                        las amenazas fantasmagóricas en domicilios, negocios, lugares públicos y edificios abandonados. Conformada en 1992, poseemos
+                        amplia experiencia y conocimientos en sombras, espíritus, polstergeists, demonios, mímicos y más.</p>
+                </div>
+                </div>
+        </div>
+    </section>
 
-            <tr>
-                <td class="contenedor-centrado "><a href="modificaciones.html">Modificar datos de productos</a></td>
-            </tr>
+    <div class="separadorBlock"></div>
 
-            <tr>
-                <td class="contenedor-centrado "><a href="listadoEliminar.html">Eliminar productos</a></td>
-            </tr>
+    <a name="Servicios"></a>
+    <div class="contenedor" id="servicios">
+        <!-- Añadir información sobre nuestros servicios -->
+            <div class="separador">
+                <div class="separador-servicio">
+                <h2>Servicios</h2>
+                </div>
+            </div>
+            
+            <div id="lista_servicios">
+            </div>
+            <div id="modal_servicios" class="hide">
+                <div id="modal_contenido">
+                    <span class="close">&times;</span>
+                    <h3 class="modser"></h3>
+                    <p class="modser"></p>
+                    <h4 class="modser"></h4>
+                    <button id="contratar">Contratar</button>
+                </div>
+            </div>
 
-            <tr>
-                <td class="contenedor-centrado "><a href="carrito1.html">Carrito de compras</a></td>
-            </tr>
-        </table>
+    </div>
+
+    <div class="separadorBlock"></div>
+    
+    <a name="Productos"></a>
+    <div id="Productos">
+        <h2>Productos</h2>
+        <div id="app">
+            <button @click="mostrarPanel = !mostrarPanel">Panel de control (¡No tocar! Solo personal)</button>
+            <div v-if="mostrarPanel">
+                <table>
+                    <tr>
+                        <td class="contenedor-centrado"><a href="altas.html">Alta de productos</a></td>
+                    </tr>
+        
+                    <tr>
+                        <td class="contenedor-centrado "><a href="listado.html">Listado de productos</a></td>
+                    </tr>
+        
+                    <tr>
+                        <td class="contenedor-centrado "><a href="modificaciones.html">Modificar datos de productos</a></td>
+                    </tr>
+        
+                    <tr>
+                        <td class="contenedor-centrado "><a href="listadoEliminar.html">Eliminar productos</a></td>
+                    </tr>
+        
+                    <tr>
+                        <td class="contenedor-centrado "><a href="carrito1.html">Carrito de compras</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <h1>Carrito de compras</h1>
+            <table>
+            <thead>
+                <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Carrito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="producto in productos" :key="producto.codigo">
+                <td>{{ producto.codigo }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td align="right">{{ producto.cantidad }}</td>
+                <td align="right">&nbsp; &nbsp; {{ producto.precio }}</td>
+                <td>
+                    <button @click="agregarAlCarrito(producto)">&nbsp;&nbsp;<b>+</b>&nbsp;&nbsp;</button>
+                    <button @click="restarDelCarrito(producto)">&nbsp;&nbsp;<b>-</b>&nbsp;&nbsp;</button>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+
+            <div v-if="mostrarCarrito">
+            <h3>Productos en el carrito:</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in carrito" :key="item.codigo">
+                    <td>{{ item.codigo }}</td>
+                    <td>{{ item.descripcion }}</td>
+                    <td align="right">{{ item.cantidad }}</td>
+                    <td align="right">&nbsp; &nbsp; {{ item.precio }}</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div v-if="!mostrarCarrito" class="contenedor-centrado">
+            <button @click="obtenerCarrito">Mostrar carrito</button>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <div class="separadorBlock"></div>
+
+    <a name="Clientes"></a>
+    <div class="contenedorClientes">
+        <!-- Añadir información sobre nuestros clientes -->
+        <div class="separador-clientes">
+        <h2>Clientes</h2>
+        </div>
+        <p id="clientesp">Estamos contentos de poder eliminar espectros para:</p>
+        <section class="carousel">
+            <div class="carousel__item active">
+                <img src="./images/pexels-david-gallie-15367388.jpg" alt="Travel 1">
+            </div>
+            <div class="carousel__item">
+                <img src="./images/pexels-inga-seliverstova-5686368.jpg" alt="Travel 2">
+            </div>
+            <div class="carousel__item">
+                <img src="./images/pexels-luis-del-río-15286.jpg" alt="Travel 3">
+            </div>
+            <div class="carousel__item">
+                <img src="./images/pexels-olena-bohovyk-3646172.jpg" alt="Travel 4">
+            </div>
+            <button class="carousel__btn carousel__btn--left">&#8249;</button>
+            <button class="carousel__btn carousel__btn--right">&#8250;</button>
+        </section>
+        <br>
+        <div class = "testimonios_header">
+            <div class="opiniones">
+            <h3>Nuestros clientes dicen</h3>
+            </div>
+        </div>
+        <!-- Testimonios contenedor -->
+        <div class = "testimonios_contenedor">
+
+        </div>
+
+        <div class="separadorBlock"></div>
+
+        <a name="Contacto"></a>
+        <div class="contenedor" id="contacto">
+            <!-- Añadir formulario para ponerse en contacto -->
+            <div class="separador">
+            <h2>Contacto</h2>
+            <br>
+            <p> Completa el formulario y solicita tu presupuesto sin cargo, nos pondremos en contacto contigo</p>
+            <br>
+            <br>
+            </div>
+            <main>
+                <h3>Formulario de contacto</h3>
+                <form action="" name="formulario" method="get">
+                    <fieldset>
+                    
+                        <label for="nombre" class="colocar_nombre">Nombre y apellido <span class="obligatorio">*</span>
+                        </label>
+                        <br>
+                        <input type="text" id="nombre" size= "55" placeholder="Escribe tu nombre y apellido" autocomplete="name">
+                        <br>
+                        <br>
+                        
+                        <label for="email" class="colocar_email"> Dirección de correo electrónico 
+                            <span class="obligatorio">*</span>
+                        </label>
+                        <br>
+                        <input type="email" id="email"  size= "55" placeholder="Escribe tu dirección de correo electrónico" autocomplete="email">
+                        <br>
+                        <br>
+                            
+                        <label for="telefono" class="colocar_telefono">Teléfono </label>
+                        <br>
+                        <input type="tel" id="telefono" size= "30" placeholder="Escribe tu teléfono" autocomplete="tel-national">
+                        <br>
+                        <br>
+            
+                        <label for="asunto" class="colocar_asunto"> Asunto <span class="obligatorio">*</span>
+                        </label>
+                        <br>
+                        <input type="text" id="asunto" size= "55" placeholder="Escribe un asunto" autocomplete="off">
+                        <br>
+                        <br>
+
+                        <label for="servForm"> Servicio a contratar <span class="obligatorio">*</span></label>
+                        <br>
+                        <select id="servForm" name="servForm">
+                            
+                        </select>
+                        <br>
+                        <br>
+            
+                        <label for="comentarios">Comentarios *</label>
+                        <br>
+                        <textarea name="comentarios" id="comentarios" placeholder="Deja aquí tu comentario" cols="45" rows="10"></textarea>
+                        <br>
+                        <br>
+                        <button type="submit" name="boton" id="boton"><p>Enviar</p></button>
+            
+                        <p class="aviso">
+                        <span class="obligatorio"> * </span> Los campos son obligatorios
+                        </p>
+            
+                    </fieldset>
+                
+                </form>
+                </main>  
+
+
+    </div>
+
+    <footer class="footer">
+        <div class="contenedorFooter"> 
+            <div class="fila-footer">
+                <div class="footer-links">
+                    <h4>Empresa</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Asociados</a></li>
+                        <li><a href="#">Trabaja Con Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Ayuda</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Atención Al Cliente</a></li>
+                        <li><a href="#">Política De Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Redes</h4>
+                    <div class="redesSociales">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>    
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </footer>
+    <script type="text/javascript" src="./scripts/servicios.js"></script>
+    <script type="text/javascript" src="./scripts/resenas.js"></script>
+    <script type="text/javascript" src="./scripts/scripts.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./scripts/carrito.js"></script>
+
 </body>
 
 </html>
