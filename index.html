@@ -80,12 +80,12 @@
     
     <a name="Productos"></a>
     <div style="text-align: center;" id="Productos" class="contenedor">
-        <h2 ">Productos</h2>
+        <h2>Productos</h2>
         <div id="app">
             <a href="modificaciones.html">Panel de control (¡No tocar! Solo personal)</a>
                     
 
-            <h1>Carrito de compras</h1>
+            <h3>Carrito de compras</h3>
             <table style="margin: auto;">
             <thead>
                 <tr>
@@ -129,6 +129,7 @@
                     <td align="right">&nbsp; &nbsp; {{ item.precio }}</td>
                 </tr>
                 </tbody>
+                <button @click="obtenerCarrito">Actualizar carrito</button>
             </table>
             </div>
 
