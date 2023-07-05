@@ -127,6 +127,11 @@ a:hover {
 
 
 /* Modal productos */
+#modalModifBtn {
+  display: flex;
+  margin: 18px auto;
+}
+
 #modalModif {
     display: none;
     width: 100%;

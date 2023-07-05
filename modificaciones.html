@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar Producto</title>
+    <title>EspectroZero | Panel de Control</title>
     <link rel="stylesheet" href="css/estilos.css">
-        <script src="https://unpkg.com/vue@next"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo-simple.png">
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
 
 <body>
@@ -50,9 +51,14 @@
     <h2>Modificar producto</h2>
     <div id="appMod">
         <form @submit.prevent="obtenerProducto">
-            <label for="codigo">Código:</label>
-            <input type="text" v-model="codigo" required><br>
-            <button id="modalModifBtn" type="submit">Modificar Producto</button>
+            <div class="row">
+                <div class="column">
+                    <label for="codigo">Código:</label>
+                    <input type="text" v-model="codigo" required><br>
+                </div>
+                <div class="column">
+                <button id="modalModifBtn" type="submit">Modificar Producto</button></div>
+            </div>
         </form>
 
         <div id="modalModif">
@@ -82,6 +88,7 @@
     <h2>Listado de productos</h2>
     <div id="appDel">
         <div>
+            <button style="margin: 15px auto; display: flex;" @click="obtenerProductos">Actualizar listado</button>
             <table>
                 <thead>
                     <tr>
@@ -103,7 +110,7 @@
                 </tbody>
             </table>
         </div>
-        <button @click="obtenerProductos">Actualizar listado</button>
+        
     </div>
 
     <script src="./scripts/modif.js"></script>
