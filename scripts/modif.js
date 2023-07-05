@@ -74,7 +74,7 @@ const appMod = Vue.createApp({
                     if (response.ok) {
                         return response.json()
                     } else {
-                        throw new Error('Error al obtener los datos del producto.')
+                        throw new Error('Error al comunicarse con la base de datos.')
                     }
                 })
                 .then(data => {
@@ -82,11 +82,20 @@ const appMod = Vue.createApp({
                     this.cantidad = data.cantidad
                     this.precio = data.precio
                     this.mostrarDatosProducto = true
+                    const modal = document.querySelector('#modalModif');
+                    modal.style.display = 'block';
                 })
                 .catch(error => {
                     alert('Error al obtener los datos del producto.')
                 })
         },
+
+        cerrarModal() {
+            this.mostrarDatosProducto = false;
+            const modal = document.querySelector('#modalModif');
+            modal.style.display = 'none';
+        },
+
         guardarCambios() {
             const producto = {
                 codigo: this.codigo,
@@ -121,6 +130,8 @@ const appMod = Vue.createApp({
 })
 
 appMod.mount('#appMod');
+
+
 
 //////////////////////////////////
 // Borrar productos

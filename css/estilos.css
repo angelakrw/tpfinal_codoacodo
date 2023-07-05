@@ -124,3 +124,79 @@ a:hover {
     background-color: #058191b6;
 }
 
+
+
+/* Modal productos */
+#modalModif {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  #modifCont {
+    background-color: #0e1a1f;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #858383;
+    width: 60%;
+    max-width: 500px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  #modifCont h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  #modifCont p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  #modifCont h4 {
+    float: left;
+    margin-bottom: 20px;
+    margin-left: 5%;
+    font-weight: bold;
+  }
+  
+  #modifCont button {
+    float: right;
+    margin-right: 10%;
+    background-color: #0e1a1f;
+    color: white;
+    padding: 4px;
+    border: white 1px solid;
+  }
+  
+  #modifCont button:hover {
+    border: white 2px solid;
+  }
+  
+  #modifCont button:active {
+    color: gray;
+  }
