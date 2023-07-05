@@ -346,6 +346,27 @@ p {
   }
 }
 
+/* Productos */
+#Productos button {
+  padding: 8px;
+    margin:4px;
+    background-color: #058191b6;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#Productos button:hover {
+  background-color: #0056b3;
+}
+
+#Productos table {
+  margin: auto;
+}
+
+
+
 
 /*CLIENTES*/
 
